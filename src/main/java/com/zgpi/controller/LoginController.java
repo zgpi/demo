@@ -2,6 +2,7 @@ package com.zgpi.controller;
 
 import com.zgpi.dataobject.User;
 import com.zgpi.exception.AppException;
+import com.zgpi.service.RedisService;
 import com.zgpi.service.UserService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,6 +20,8 @@ public class LoginController {
 
     @Autowired
     private UserService userService;
+    @Autowired
+    private RedisService redisService;
 
     @GetMapping("/login")
     public User login(@RequestParam("userId") String userId,
@@ -27,6 +30,7 @@ public class LoginController {
             throw new AppException("用户名或密码为空！");
         }
         User user = userService.findByUserId(userId);
+        redisService.set("user", user);
         if(user == null){
             throw new AppException("用户名不存在！");
         }
