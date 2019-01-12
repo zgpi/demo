@@ -9,27 +9,27 @@
         <id column="user_pwd" property="userPwd" jdbcType="VARCHAR" />
         <id column="last_login" property="lastLogin" jdbcType="TIMESTAMP" />
     </resultMap>
-
+    <!--登录-->
     <select id="login" resultMap="BaseResultMap">
-        select user_id, user_name, user_sex, user_pwd, last_login
-        from user_t
-        where user_id = #{user_id, jdbcType=VARCHAR}
-        and user_pwd = #{user_pwd, jdbcType=VARCHAR}
+        SELECT user_id, user_name, user_sex, user_pwd, last_login
+        FROM user_t
+        WHERE user_id = #{user_id, jdbcType=VARCHAR}
+        AND user_pwd = #{user_pwd, jdbcType=VARCHAR}
     </select>
 
     <select id="findByUserId" resultMap="BaseResultMap" parameterType="java.lang.String">
-        select user_id, user_name, user_sex, user_pwd, last_login
-        from user_t
-        where user_id = #{user_id, jdbcType=VARCHAR}
+        SELECT user_id, user_name, user_sex, user_pwd, last_login
+        FROM user_t
+        WHERE user_id = #{user_id, jdbcType=VARCHAR}
     </select>
-
+    <!--MD5加密密码-->
     <update id="md5UserPwd">
         UPDATE user_t set user_pwd = #{user_pwd}
         WHERE user_id=#{user_id}
     </update>
-
-    <insert id="saveUser" parameterType="com.zgpi.user.domain.User">
-        insert into user_t
+    <!--新增用户-->
+    <insert id="addUser" parameterType="com.zgpi.user.domain.User">
+        INSERT INTO user_t
         <trim prefix="(" suffix=")" suffixOverrides=",">
             <if test="userId != null"> user_id,</if>
             <if test="userName != null"> user_name,	</if>
@@ -43,5 +43,18 @@
             <if test="userPwd != null"> #{userPwd,jdbcType=VARCHAR},	</if>
         </trim>
     </insert>
-
+    <!--修改用户-->
+    <update id="modUser" parameterType="com.zgpi.user.domain.User">
+        UPDATE user_t
+        <trim prefix="set" suffixOverrides=",">
+            <if test="userName != null"> user_name=#{userName},	</if>
+            <if test="userSex != null"> user_sex=#{userSex},	</if>
+            <if test="userPwd != null"> user_pwd=${userPwd},	</if>
+        </trim>
+        WHERE user_id=#{userId}
+    </update>
+    <!--删除用户-->
+    <delete id="delUser" parameterType="java.lang.String">
+        DELETE FROM user_t WHERE user_id = #{userId}
+    </delete>
 </mapper>

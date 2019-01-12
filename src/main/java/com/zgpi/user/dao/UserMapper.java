@@ -13,6 +13,10 @@ public interface UserMapper {
 
     User findByUserId(String userId);
 
-    void saveUser(User user);
+    void addUser(User user);
+
+    void modUser(User user);
+
+    void delUser(String userId);
 
 }

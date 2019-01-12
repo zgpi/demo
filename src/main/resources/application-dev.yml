@@ -31,6 +31,8 @@ spring:
     connectionProperties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=5000
     # 合并多个DruidDataSource的监控数据
     #spring.datasource.useGlobalDataSourceStat=true
+  devtools.restart.enabled: false
+  devtools.restart.additional-paths: src/main/java
 
 druid:
   allow: #允许登陆的IP地址

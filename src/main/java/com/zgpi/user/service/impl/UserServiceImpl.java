@@ -41,7 +41,7 @@ public class UserServiceImpl implements UserService {
         //登录成功
         String token = UUID.randomUUID().toString();//生成的uuid必不重复
         user.setUserPwd("");
-        RedisUtil.set(token, JsonUtil.toJson(user));
+        RedisUtil.set("SESSIONID:" + token, JsonUtil.toJson(user));
         return token;
     }
 
@@ -56,8 +56,35 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void saveUser(User user) {
-        userMapper.saveUser(user);
+    public void addUser(User user) {
+        if(user == null){
+            throw new AppException("参数传递错误！");
+        }
+        User db_user = this.findByUserId(user.getUserId());
+        if(db_user != null){
+            throw new AppException("用户名已存在，请修改后再提交！");
+        }
+        userMapper.addUser(user);
+    }
+
+    @Override
+    public void modUser(User user) {
+        if(user == null){
+            throw new AppException("参数传递错误！");
+        }
+        User db_user = this.findByUserId(user.getUserId());
+        if(db_user == null){
+            throw new AppException("用户不存在！");
+        }
+        userMapper.modUser(user);
+    }
+
+    @Override
+    public void delUser(String userId) {
+        if(StringUtils.isEmpty(userId)){
+            throw new AppException("参数传递错误！");
+        }
+        userMapper.delUser(userId);
     }
 
 

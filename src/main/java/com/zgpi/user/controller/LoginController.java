@@ -1,23 +1,17 @@
 package com.zgpi.user.controller;
 
-import com.zgpi.common.exception.AppException;
 import com.zgpi.common.utils.CookieUtil;
 import com.zgpi.common.utils.JsonUtil;
 import com.zgpi.common.utils.ResultVOUtil;
-import com.zgpi.user.domain.User;
 import com.zgpi.user.service.UserService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.util.DigestUtils;
-import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-import sun.nio.cs.US_ASCII;
 
 import javax.servlet.http.HttpServletResponse;
-import java.util.UUID;
 
 @RestController
 @Slf4j

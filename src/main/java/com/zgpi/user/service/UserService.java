@@ -10,5 +10,9 @@ public interface UserService {
 
     public User findByUserId(String userId);
 
-    public void saveUser(User user);
+    public void addUser(User user);
+
+    public void modUser(User user);
+
+    public void delUser(String userId);
 }

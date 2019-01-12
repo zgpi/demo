@@ -1,5 +1,6 @@
 package com.zgpi.interceptor;
 
+import com.zgpi.common.exception.AppException;
 import com.zgpi.common.utils.CookieUtil;
 import com.zgpi.common.utils.RedisUtil;
 import lombok.extern.slf4j.Slf4j;
@@ -29,12 +30,12 @@ public class LoginInterceptor extends HandlerInterceptorAdapter {
         String cookie = CookieUtil.readLoginToken(httpServletRequest);
         log.info("cookie:" + cookie);
         if(StringUtils.isEmpty(cookie)){//没有cookie
-            return false;
+            throw new AppException("请先登录！");
         }
-        Object token = RedisUtil.get(cookie);
+        Object token = RedisUtil.get("SESSIONID:" + cookie);
         log.info("token:" + token);
         if(StringUtils.isEmpty(token)){//redis中没有该token
-            return false;
+            throw new AppException("请先登录！");
         }
         return true;
 

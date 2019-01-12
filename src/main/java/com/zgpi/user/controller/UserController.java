@@ -1,5 +1,7 @@
 package com.zgpi.user.controller;
 
+import com.zgpi.common.utils.JsonUtil;
+import com.zgpi.common.utils.ResultVOUtil;
 import com.zgpi.user.domain.User;
 import com.zgpi.user.service.UserService;
 import lombok.extern.slf4j.Slf4j;
@@ -18,10 +20,29 @@ public class UserController {
 
     @PostMapping("/addUser")
     public String addUser(User user){
-        user.setUserName("测试");
-        user.setUserSex(1);
-        user.setUserPwd("000001");
-        userService.saveUser(user);
-        return "success";
+        userService.addUser(user);
+        return JsonUtil.toJsonString("retMsg",ResultVOUtil.success());
+    }
+
+    /**
+     * 修改用户
+     * @param user
+     * @return
+     */
+    @PostMapping("/modUser")
+    public String modUser(User user){
+        userService.modUser(user);
+        return JsonUtil.toJsonString("retMsg",ResultVOUtil.success());
+    }
+
+    /**
+     * 删除用户
+     * @param userId
+     * @return
+     */
+    @PostMapping("/delUser")
+    public String delUser(String userId){
+        userService.delUser(userId);
+        return JsonUtil.toJsonString("retMsg",ResultVOUtil.success());
     }
 }
