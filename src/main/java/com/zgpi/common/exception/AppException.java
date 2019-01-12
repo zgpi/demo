@@ -1,6 +1,6 @@
-package com.zgpi.exception;
+package com.zgpi.common.exception;
 
-import com.zgpi.enums.ResultEnum;
+import com.zgpi.common.enums.ResultEnum;
 import lombok.Getter;
 
 @Getter

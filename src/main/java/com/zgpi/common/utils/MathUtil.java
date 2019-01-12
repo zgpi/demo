@@ -1,4 +1,4 @@
-package com.zgpi.utils;
+package com.zgpi.common.utils;
 
 public class MathUtil {
 

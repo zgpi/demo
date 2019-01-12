@@ -6,7 +6,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cache.annotation.EnableCaching;
 
 @SpringBootApplication
-@MapperScan(basePackages = "com.zgpi.dataobject.mapper")
+@MapperScan(basePackages = "com.zgpi.*.dao")
 @EnableCaching
 public class DemoApplication {
 

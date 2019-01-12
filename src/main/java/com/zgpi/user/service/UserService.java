@@ -1,10 +1,10 @@
-package com.zgpi.service;
+package com.zgpi.user.service;
 
-import com.zgpi.dataobject.User;
+import com.zgpi.user.domain.User;
 
 public interface UserService {
 
-    public User login(String userId, String userPwd);
+    public String login(String userId, String userPwd);
 
     public void md5UserPwd(String userId, String userPwd);
 

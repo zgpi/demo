@@ -1,4 +1,4 @@
-package com.zgpi.exception;
+package com.zgpi.common.exception;
 
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;

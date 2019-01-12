@@ -1,4 +1,4 @@
-package com.zgpi.VO;
+package com.zgpi.common.VO;
 
 import lombok.Data;
 

@@ -1,6 +1,6 @@
-package com.zgpi.utils;
+package com.zgpi.common.utils;
 
-import com.zgpi.VO.ResultVO;
+import com.zgpi.common.VO.ResultVO;
 
 public class ResultVOUtil {
 

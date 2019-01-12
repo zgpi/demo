@@ -1,4 +1,4 @@
-package com.zgpi.enums;
+package com.zgpi.common.enums;
 
 import lombok.Getter;
 

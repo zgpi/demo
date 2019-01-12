@@ -1,4 +1,4 @@
-package com.zgpi.dataobject;
+package com.zgpi.user.domain;
 
 import lombok.Data;
 

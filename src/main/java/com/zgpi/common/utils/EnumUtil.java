@@ -1,6 +1,6 @@
-package com.zgpi.utils;
+package com.zgpi.common.utils;
 
-import com.zgpi.enums.CodeEnum;
+import com.zgpi.common.enums.CodeEnum;
 
 public class EnumUtil {
 

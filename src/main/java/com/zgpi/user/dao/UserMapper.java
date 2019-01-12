@@ -1,10 +1,8 @@
-package com.zgpi.dataobject.mapper;
+package com.zgpi.user.dao;
 
-import com.zgpi.dataobject.User;
-import org.apache.ibatis.annotations.*;
-
-import java.util.List;
-import java.util.Map;
+import com.zgpi.user.domain.User;
+import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 
 @Mapper
 public interface UserMapper {

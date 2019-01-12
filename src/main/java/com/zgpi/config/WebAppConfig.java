@@ -1,10 +1,12 @@
 package com.zgpi.config;
 
+import com.zgpi.interceptor.LoginInterceptor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.converter.HttpMessageConverter;
 import org.springframework.http.converter.StringHttpMessageConverter;
 import org.springframework.web.servlet.config.annotation.ContentNegotiationConfigurer;
+import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 
 import java.nio.charset.Charset;
@@ -29,5 +31,11 @@ public class WebAppConfig extends WebMvcConfigurerAdapter {
     public void configureContentNegotiation(
             ContentNegotiationConfigurer configurer) {
         configurer.favorPathExtension(false);
+    }
+
+    @Override
+    public void addInterceptors(InterceptorRegistry registry){
+        registry.addInterceptor(new LoginInterceptor()).addPathPatterns("/**")
+                .excludePathPatterns("/login");
     }
 }
